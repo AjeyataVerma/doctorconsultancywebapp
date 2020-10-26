@@ -1,0 +1,118 @@
+.navbtn1{
+  margin-right: 20px;
+  margin-left: 200px;
+}
+
+.navbar{
+   /* padding: 3rem 12rem; */
+   padding-bottom: 4%;
+ }
+.navbar-brand{
+  /* font-family: "Ubuntu"; */
+  font-size: 2rem;
+  font-weight: bold;
+}
+.nav-item{
+  padding: 0 10px;
+}
+.nav-link{
+  font-size: 1.2rem;
+
+}
+.navbar-nav{
+  margin-left:500px;
+}
+
+#carousel{
+  text-align: center;
+  background-color: #7C7CDD;
+  color: #fff;
+}
+.c1{
+  width: 30%;
+  height: 40%;
+  float: right;
+  margin-right: 200px;
+  margin-top: -200px;
+  padding-bottom: 70px;
+  /* width:30%;
+  float: right; */
+  /* margin-right: 30px; */
+  /* margin-top: -20px; */
+  /* margin-bottom: 30px; */
+}
+p{
+  text-align:left;
+  width: 30%;
+  margin-left: 180px;
+  margin-top: 50px;
+  padding-top: 150px
+
+}
+h2{
+  margin: 50px auto 0 auto;
+  /* margin-bottom: -40px; */
+  text-align: left;
+  margin-left: 180px
+
+
+}
+
+
+
+h1{
+  text-align: center;
+    /* margin: 50px auto 0 auto; */
+    padding-top: 50px;
+}
+
+.app{
+  width: 70%;
+  text-align: center;
+  margin-top: -120px;
+}
+.appbtn{
+  text-align: center;
+  margin: 0 auto 20px;
+  margin-left: 700px;
+  border-radius: 10px;
+  width: 150px;
+  background-color: #7C7CDD;
+  color: white;
+
+}
+
+
+#doctor{
+  padding: 100px 30px 20px;
+}
+h3{
+  margin-left: 800px;
+  padding-top: 20px;
+}
+.doctor{
+  text-align:center;
+  margin-left: 750px;
+  margin-right: 60px;
+  margin-top: -120px;
+  width: 45%;
+}
+.doctorimg{
+  float: left;
+  margin-left: 50px;
+  width: 40%;
+  height: 45%;
+  padding-bottom: 20px;
+}
+.doctorbtn{
+  /* margin: 0 auto 20px; */
+  margin-left: 950px;
+  /* margin-top: -200px; */
+  border-radius: 10px;
+  margin-bottom: 80px;
+  margin-top: -40px;
+  width: 250px;
+  height: 30px;
+  background-color: #7C7CDD;
+  color: white;
+}
