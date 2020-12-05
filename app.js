@@ -404,6 +404,6 @@ app.get("/doctorside", function(req, res) {
       //   res.send("<h1>contact me</h1>")
       // });
 
-      app.listen(3000, function() {
-        console.log("server at 3000;")
+      app.listen(process.env.PORT || 3000, function() {
+        console.log("server running;")
       });
