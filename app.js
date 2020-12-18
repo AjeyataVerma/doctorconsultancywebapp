@@ -1,7 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
-
+const bcrypt = require('bcrypt');
+var flash = require('express-flash')
 const app = express();
 
 app.set('view-engine', 'ejs')
@@ -191,15 +192,24 @@ const defaultItems = [doc1, doc2, doc3, doc4, doc5, doc6, doc7, doc8, doc9, doc1
 app.get("/", function(req, res) {
   res.sendFile(__dirname + "/home.html")
 });
+
 app.get("/register", function(req, res) {
   res.render('register.ejs')
 })
-app.post("/register", function(req, res) {
-  const newUser = new User({
+
+app.post("/register",async function(req, res) {
+
+    const salt = await bcrypt.genSalt();
+    const hashedPassword = await bcrypt.hash(req.body.pass, salt);
+      
+const newUser = new User({
     name: req.body.name,
     email: req.body.email,
-    password: req.body.pass
+    password: hashedPassword
   });
+   
+  
+
   newUser.save(function(err) {
     if (err) {
       console.log(err);
@@ -208,6 +218,7 @@ app.post("/register", function(req, res) {
     }
   })
 })
+
 app.get("/login", function(req, res) {
   // res.sendFile(__dirname + "/signin.html")
   res.render('login.ejs')
@@ -219,13 +230,18 @@ app.post("/login", function(req, res) {
   const email = req.body.email;
   const password = req.body.password;
 
-  User.findOne({email: email}, function(err, foundUser) {
+  User.findOne({email: email}, async function(err, foundUser) {
     if (err) {
       console.log(err);
-    } else {
+    } 
+      else {
       if (foundUser) {
-        if (foundUser.password === password) {
+          console.log(foundUser.password);
+          console.log(password);
+        
+              if(await bcrypt.compare(password,foundUser.password)){
           aemail = email;
+                  
           Doctor.find({}, function(err, foundDr) {
             if (foundDr.length === 0) {
               Doctor.insertMany(defaultItems, function(err) {
@@ -240,9 +256,17 @@ app.post("/login", function(req, res) {
               res.render('doc.ejs', { newListItems: foundDr})
             }
           })
+                  
         }else{
-          res.redirect("/login")
+           req.flash('error',"incorrect password");
+            res.redirect('/login');
         }
+          
+          
+      }
+      else{
+           req.flash('error',"incorrect credentials"); 
+          res.redirect('/login');
       }
     }
   })
@@ -404,6 +428,11 @@ app.get("/doctorside", function(req, res) {
       //   res.send("<h1>contact me</h1>")
       // });
 
-      app.listen(3000, function() {
-        console.log("server at 3000;")
+        let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
+
+      app.listen(port, function() {
+        console.log("server has started successfully");
       });
