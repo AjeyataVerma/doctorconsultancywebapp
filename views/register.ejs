@@ -9,7 +9,7 @@
     <!-- Font Icon -->
     <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-
+    <link href="https://yui.yahooapis.com/pure/0.5.0/pure-min.css" rel="stylesheet">
     <!-- Main css -->
     <link rel="stylesheet" href="/css/sign.css">
 </head>
@@ -37,8 +37,8 @@
                                 <input type="password" name="pass" id="pass" placeholder="Password" required/>
                             </div>
                             <div class="form-group">
-                                <label for="re-pass"><i class="ri-lock-2-line"></i></label>
-                                <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password" required/>
+                                <label for="repass"><i class="ri-lock-2-fill"></i></label>
+                                <input type="password" name="repass" id="repass" placeholder="Repeat your password" required/>
                             </div>
                             
                             <div class="form-group form-button">
@@ -54,8 +54,26 @@
             </div>
         </section>
       </div>
+      <script>
+    var password = document.getElementById("pass")
+  , confirm_password = document.getElementById("repass");
+       console.log(password);
+    console.log(confirm_password);
+    
+function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Passwords Don't Match");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+    </script>
 
       <script src="vendor/jquery/jquery.min.js"></script>
       <script src="js/main.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
       </body>
       </html>
